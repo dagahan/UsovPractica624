@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
+//Задание 3. Добавляйте новые элементы в список до тех пор, пока пользователь не
+//отправит пустую строку. Выведите в консоль самый короткий
+//и самый длинный элементы списка;
 
 public class Program
 {
@@ -15,9 +17,9 @@ public class Program
             {
                 Console.Write("Введите элемент: ");
                 var element = Console.ReadLine();
-                if (string.IsNullOrEmpty(element))
+                if (string.IsNullOrEmpty(element))//Выход из вот этого цикла по добавлению если строка пустая
                 {
-                    break; // Выход из цикла, если строка пустая
+                    break;
                 }
 
                 elements.Add(element);

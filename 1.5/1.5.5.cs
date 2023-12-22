@@ -2,6 +2,9 @@
 using System.IO;
 using System.Linq;
 
+//Задание 5. Дан файл numsTask5.txt с целыми числами. Вычислите среднее
+//арифметическое элементов расположенных между минимальным и максимальным;
+
 class Program
 {
     static void Main()

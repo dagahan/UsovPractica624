@@ -1,10 +1,26 @@
 ﻿using System;
 
+//Задание 3. Дан файл, содержащий несколько целых чисел количеством i. Создайте
+//массив height длиной i. Каждый элемент массива это вертикальная линия определенной
+//длины. Найдите две линии, которые вместе с осью x образуют контейнер, содержащий
+//наибольшее количество воды;
+
+
 class Program
 {
     static void Main()
     {
-        int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+        Random rand = new Random();
+        string iString = File.ReadAllText("i.txt");
+        int i = int.Parse(iString);
+
+        int[] height = new int[i];
+        for (int j = 0; j < i; j++)
+        {
+            height[j] = rand.Next(1, 10);
+            Console.WriteLine(height[j]);
+        }
+       
         int maxArea = MaxArea(height);
         Console.WriteLine(maxArea);
     }

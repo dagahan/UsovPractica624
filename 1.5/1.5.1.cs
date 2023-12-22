@@ -2,6 +2,10 @@
 using System.IO;
 using System.Linq;
 
+//Задание 1. Дан файл numsTask1.txt с целыми числами, вычислите произведение
+//элементов расположенных после минимального
+
+
 class Program
 {
     static void Main()

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.IO;
 
+//Задание 3. Дан файл numsTask3.txt с целыми числами, вычислите среднее
+//арифметическое элементов расположенных до минимального;
+
+
 class Program
 {
     static void Main()
@@ -10,7 +14,7 @@ class Program
         {
             line = reader.ReadLine();
         }
-        string[] numbers = line.Split(';');
+        string[] numbers = line.Split(' ');
         int minIndex = 0;
         int min = int.Parse(numbers[0]);
         for (int i = 0; i < numbers.Length; i++)

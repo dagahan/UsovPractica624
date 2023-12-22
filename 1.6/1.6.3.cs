@@ -1,5 +1,8 @@
 ﻿using System;
 
+//Задание 3. Дано число. Определите будет ли это число четным и кратным 10;
+
+
 class Program
 {
     static void Main()

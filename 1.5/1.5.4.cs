@@ -1,6 +1,9 @@
 ﻿using System;
 using System.IO;
 
+//Задание 4. Дан файл numsTask4.txt с целыми числами. Вычислите сумму элементов,
+//отличающихся от максимального на 1;
+
 class Program
 {
     static void Main()

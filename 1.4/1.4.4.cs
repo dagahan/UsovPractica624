@@ -1,6 +1,10 @@
 ﻿using System;
 using System.IO;
 
+//Задание 4. Дан файл numsTask4.txt с целыми числами, расположенными через пробел.
+//Определите количество одинаковых рядом стоящих чисел;
+
+
 class Program
 {
     static void Main()

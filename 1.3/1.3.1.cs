@@ -1,55 +1,91 @@
 ﻿using System;
 using System.IO;
 
-namespace YourNamespace
+
+//Задание 1. На различных мероприятиях команда стажировок регулярно разыгрывает
+//призы в лотерею. Организаторы выбирают 10 случайных различных чисел от 1 до 32.
+//Каждому участнику выдается лотерейный билет, на котором записаны 6 различных чисел
+//от 1 до 32. Билет считается выигрышным, если в нем есть не менее 3 выбранных
+//организаторами числа. Помогите Юле, напишите программу, которая будет сообщать,
+//какие билеты выигрышные.
+//Формат ввода
+//Данные должны браться из файла input.txt
+//В первой строке входных данных записаны 10 различных целых чисел ai (1≤ai≤32) —
+//выбранные организаторами числа. Во второй строке записано одно целое число n
+//(1≤n≤1000) — количество лотерейных билетов, выданных на мероприятии. В каждой из
+//n последующих строк записаны 6 различных целых чисел bj (1≤bj≤32) — числа,
+//записанные на очередном лотерейном билета.
+//Формат вывода
+//Данные должны выводиться(сохраняться) в файл output.txt
+//Выведите n строк. Для каждого лотерейного билета в порядке следования во входных
+//данных выведите строку Lucky, если билет выигрышный, иначе выведите Unlucky.
+//Пример
+//Ввод
+//1 2 3 4 5 6 7 8 9 32
+//3
+//1 2 10 11 12 13
+//1 2 3 10 11 12
+//32 1 10 20 30 3
+///Вывод
+//Unlucky
+//Lucky
+//Lucky
+
+
+class Program
 {
-    class Program
+
+    static void Main()
     {
+        string[] input = File.ReadAllLines("input.txt");
 
-        static void Main()
+        if (input.Length < 3)//проверяет достаточно ли элементов, иначе не пускает дальше
         {
-            string[] input = File.ReadAllLines("input.txt");
-
-            if (input.Length < 3) // Check if input contains enough elements
-            {
-                Console.WriteLine("Input data is not in the expected format.");
-                return;
-            }
-
-            string[] chosenNumbers = input[0].Split(' ');
-            int n;
-
-            if (!int.TryParse(input[1], out n)) // Check if n can be parsed as an integer
-            {
-                Console.WriteLine("Invalid value for n.");
-                return;
-            }
-
-            string[] output = new string[n];
-
-            for (int i = 0; i < n; i++)
-            {
-                if (input.Length < i + 3) // Check if input contains enough elements for ticketNumbers
-                {
-                    Console.WriteLine("Not enough ticket numbers in input data.");
-                    return;
-                }
-
-                string[] ticketNumbers = input[i + 2].Split(' ');
-                int count = 0;
-
-                foreach (string number in ticketNumbers)
-                {
-                    if (Array.IndexOf(chosenNumbers, number) != -1)
-                    {
-                        count++;
-                    }
-                }
-
-                output[i] = count >= 3 ? "Lucky" : "Unlucky";
-            }
-
-            File.WriteAllLines("output.txt", output);
+            Console.WriteLine("Входные данные не соответствуют нужному виду");
+            return; 
         }
+
+        string[] chosenNumbers = input[0].Split(' ');
+        int n;
+
+        if (!int.TryParse(input[1], out n)) //трает парсинг число из input (на второй строчке, а это число билетов) в n, и если неудачно, то не пускает дальше, иначе всё норм и n теперь со значением
+        {
+            Console.WriteLine("Ошибка в колличестве билетов");
+            return;
+        }
+
+        string[] output = new string[n];
+
+        for (int i = 0; i < n; i++) //проходит по строчкам (билетам) исходя из n колличества билетов
+        {
+            if (input.Length < i + 3) //чекает, достаточно ли элементов для ввода ticketNumbers
+            {
+                Console.WriteLine("Не хватает колличества билетов");
+                return;
+            }
+
+            string[] ticketNumbers = input[i + 2].Split(' ');
+            int count = 0;
+
+            foreach (string number in ticketNumbers) //проходит по всем элементам (числам) в массиве чисел из билета (вдоль строчки)
+            {
+                if (Array.IndexOf(chosenNumbers, number) != -1)
+                {
+                    count++; //если совпадает число с выигрышном то добавляется одно очко
+                }
+            }
+            
+            //если очков 3 или больше то билет лаки, иначе анлаки((9(
+            if (count >= 3)
+            {
+                output[i] = "Lucky";
+            }
+            else
+            {
+                output[i] = "Unlucky";
+            }
+        }
+
+        File.WriteAllLines("output.txt", output); //в конце всё сохраняется в output.txt файл
     }
 }

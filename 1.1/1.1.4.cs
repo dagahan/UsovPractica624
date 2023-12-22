@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+//Задание 4. Напишите функцию, которая заполняет список случайными числами в
+//диапазоне, указанном пользователем. Функция принимает начало диапазона и его конец,
+//и возвращает целочисленный массив. С помощью специальной формы цикла for
+//выведете элементы получившегося массив в одну строку, с пробелами;
 
 public class Program
 {
@@ -18,7 +22,7 @@ public class Program
         }
     }
 
-    public static int[] GenerateRandomList(int start, int end, int length)
+    public static int[] GenerateRandomList(int start, int end, int length) //минимальный придел для генерации числа и максимальный, размер (колличество элементов в массиве)
     {
         int[] randomList = new int[length];
         Random rand = new Random();

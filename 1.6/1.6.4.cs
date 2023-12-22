@@ -1,5 +1,8 @@
 ﻿using System;
 
+//Задание 4. Вводятся положительные числа. Определите сумму чисел, делящихся на
+//положительное число a нацело. При вводе отрицательного числа закончите работу;
+
 class Program
 {
     static void Main()
@@ -11,17 +14,24 @@ class Program
 
         while (true)
         {
-            Console.WriteLine("Введите положительное число:");
-            int number = Convert.ToInt32(Console.ReadLine());
-
-            if (number < 0)
+            try
             {
-                break;
+                Console.WriteLine("Введите положительное число:");
+                int number = Convert.ToInt32(Console.ReadLine());
+
+                if (number < 0)
+                {
+                    break;
+                }
+
+                if (number % a == 0)
+                {
+                    sum += number;
+                }
             }
-
-            if (number % a == 0)
+            catch
             {
-                sum += number;
+                Console.WriteLine("Некорректный ввод числа");
             }
         }
 
